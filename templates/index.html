@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Recommender</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #111;
+            color: white;
+        }
+
+        h1 {
+            margin-top: 30px;
+        }
+
+        select, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background: #222;
+            margin: 5px auto;
+            padding: 10px;
+            width: 300px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🎬 Movie Recommender System</h1>
+
+    <!-- Movie Selection Form -->
+    <form method="POST">
+        <select name="movie" required>
+            <option value="" disabled selected>Select a movie</option>
+            
+            {% for movie in movies %}
+                <option value="{{ movie }}">{{ movie }}</option>
+            {% endfor %}
+        
+        </select>
+
+        <br>
+        <button type="submit">Recommend</button>
+    </form>
+
+    <!-- Recommendation Output -->
+    {% if recs %}
+        <h2>Recommended Movies:</h2>
+        <ul>
+            {% for m in recs %}
+                <li>{{ m }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+</body>
+</html>
